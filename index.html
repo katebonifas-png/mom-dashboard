@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mom's Transition</title>
+<title>Mom's Care Dashboard</title>
 <!-- Add to Home Screen on iOS: opens full-screen without Safari chrome -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -177,7 +177,7 @@ body,.card,.chk,.txt{max-width:100%}
 </div>
 <div class="hwrap">
     <div>
-      <h1>Mom's Transition Dashboard <span style="font-size:11px;font-weight:600;color:#fff;background:var(--accent);padding:2px 8px;border-radius:20px;vertical-align:3px;letter-spacing:.03em">v28 · stale-device protection · Aug 11</span></h1>
+      <h1>Mom's Care Dashboard <span style="font-size:11px;font-weight:600;color:#fff;background:var(--accent);padding:2px 8px;border-radius:20px;vertical-align:3px;letter-spacing:.03em">v29 · post-move · Sep 7</span></h1>
       <div class="sub" id="savedAt">Loading…</div>
       <div class="sub" id="syncDot" style="margin-top:2px">○ <span style="color:var(--muted)">sync not set up</span></div>
     </div>
@@ -333,12 +333,32 @@ body,.card,.chk,.txt{max-width:100%}
 <!-- ══════════ COUNTDOWN ══════════ -->
 <section class="panel on" id="p-count">
   <div class="grid g4" style="margin-bottom:18px">
-    <div class="stat hero"><div class="lab" id="c-d1-lab">Move-in</div><div class="val" id="c-d1">—</div><div class="foot" id="c-d1-foot">Wednesday, August 5</div></div>
-    <div class="stat"><div class="lab">Days until you drive home</div><div class="val" id="c-d2">—</div><div class="foot" id="c-d2-foot">Friday, August 14 · to LA</div></div>
+    <div class="stat hero"><div class="lab" id="c-d1-lab">Days until the Medicaid filing</div><div class="val" id="c-d1">—</div><div class="foot" id="c-d1-foot">Target: 1 June 2027</div></div>
+    <div class="stat" id="c-run-card"><div class="lab">Savings reach $2,000</div><div class="val" id="c-d2">—</div><div class="foot" id="c-d2-foot">about 20 November 2027</div></div>
     <div class="stat"><div class="lab">Today's tasks</div><div class="val" id="c-today">—</div><div class="foot" id="c-today-f">remaining</div></div>
     <div class="stat" id="c-late-card"><div class="lab">Slipped</div><div class="val" id="c-late">0</div><div class="foot">from earlier days</div></div>
   </div>
 
+  <div id="updateOut"></div>
+
+  <div class="card">
+    <h2>Open questions and known soft spots</h2>
+    <p class="note">Things that are unresolved, or where this screen could mislead you. Kept short on purpose.</p>
+    <div class="callout warn"><b>Her debts are deliberately NOT in the Accounts tab.</b> The runway subtracts anything typed
+      <i>Credit card</i> or <i>Loan</i>. Since the decision is not to pay Chase ($11,342.49) or AAA ($5,929.10), entering them
+      would cut the runway by $17,272 and pull the Medicaid date forward about three and a half months — for money that is
+      never leaving her account. They live on the Checklist under <b>Her debts</b> instead.</div>
+    <div class="callout warn"><b>Check the Ameriprise account is typed Brokerage, not IRA.</b> A tax-deferred type applies
+      the withdrawal-tax haircut and understates what she has. It is a taxable brokerage account — confirmed 7 September.</div>
+    <div class="callout info"><b>Still unknown:</b> the Conifer House care-level fee schedule. It is the one number that moves
+      every date on this screen, and a rate rise moves them <i>earlier</i>. Ask, then update the facility cost on Overview.</div>
+    <div class="callout warn"><b>This screen and the written brief differ by about two weeks, and that is expected.</b>
+      The runway above compounds the return rate set on Overview (currently 4%) on whatever is still invested.
+      The hand-calculated date in the brief assumes no growth at all. At 0% return this screen agrees with it.
+      Neither is wrong — 4% is the optimistic end of a fourteen-month drawdown. Treat the earlier date as the one to plan against.</div>
+    <div class="callout info"><b>Waiting on:</b> the Samaritan financial assistance determination, SBA's written confirmation
+      that she has no personal liability, and two unread messages in her <i>my Social Security</i> account.</div>
+  </div>
   <div id="countOut"></div>
 </section>
 
@@ -566,8 +586,35 @@ const DEF = {
   masked:false
 };
 
-/* Master move checklist. [category, task, why-it-matters] */
+/* Master checklist. [category, task, why-it-matters] */
 const TODO_SEED=[
+/* ── Added 7 Sep 2026. Everything below is post-move: the move itself is done. ── */
+["Now — September 2026","Cancel the Chase, AAA and SBA payments at Citizens, not just in each portal","Two places a recurring payment can live: the company pulls it, or the bank pushes it. Turning off autopay at Chase does nothing to a Citizens bill-pay. Then tell Citizens in writing to revoke the ACH authorisation — that is the enforceable one"],
+["Now — September 2026","Give SBA the registry number and dissolution date; ask for written confirmation of no personal liability","Springboard NW, LLC · registry 487852-99 · administratively dissolved 5 March 2026. She signed as Owner/Officer, not personally, and there is no Form 148 in the packet. Keep the whole email thread — it is the record that you told them"],
+["Now — September 2026","Call ADRC on 1-855-673-2372","Oregon's front door for Medicaid long-term care, and the referral route to Legal Aid's Senior Law Project. Free. Opens the Medicaid track, the personal-needs-allowance answer, and free legal help in one call"],
+["Now — September 2026","Request 60 months of statements from Ameriprise and Citizens","The slowest item on the whole list and the one most likely to hold up a June 2027 filing. Banks purge old records and take weeks to produce them. Nothing has to happen before this"],
+["Now — September 2026","Save 12 months of Chase and AAA statements as PDFs while she still has portal access","Not a Medicaid requirement — the lookback wants statements from accounts that hold money. This is so you still have the balance history after the accounts close and get sold"],
+["Now — September 2026","Read the two unread messages in her my Social Security account","Waiting since 17 and 18 August. Like SBA, the content sits in the account, not in the email"],
+["Now — September 2026","Ask Conifer House for the care-level fee schedule","Not urgent now the Medicaid conversion is settled, but it is the one number that pulls the filing date earlier. Better to adjust than to discover"],
+["Now — September 2026","Check the Samaritan financial assistance determination when it comes back","Oregon requires nonprofit hospitals to give fully free care at or below 200% of the federal poverty level — about \$32,000 a year for one person. She is at roughly \$24,600. The right answer is a write-off, not a percentage discount. Ask them to apply it retroactively to earlier bills this year too"],
+["Now — September 2026","Get the Conifer House Medicaid understanding into an email","Not because anyone is unreliable — because November 2027 is fifteen months away and the person who knows her situation may not be in that office then"],
+["The Medicaid track","File the application in June 2027","Four to six months before the money runs out in late November 2027. Processing takes 45 to 90 days and the facility expects \$6,300 a month throughout. Filing late leaves a gap nobody covers"],
+["The Medicaid track","No Income Cap Trust is needed — confirmed","Her gross income is about \$2,047 against Oregon's \$2,982 ceiling. This was the most expensive and slowest item on the old list and it is off. Do not let anyone re-open it"],
+["The Medicaid track","Start the Representative Payee application","Social Security does not accept a power of attorney. Separate application, its own interview, takes weeks. Not urgent today — which is exactly why it gets missed"],
+["The Medicaid track","Do each institution's own POA acceptance process","Ameriprise and Citizens will each want their own form plus one to three weeks of legal review. Having a POA and having a bank honour it are different things"],
+["The Medicaid track","Ask ADRC about the burial exclusion","Oregon lets an irrevocable prepaid funeral plan sit outside the \$2,000 asset limit. Money spent on it is not a gift and creates no penalty. It is a purchase at a funeral home, not legal work — the one part of the spend-down worth planning rather than letting happen"],
+["The Medicaid track","Ask ADRC what her personal needs allowance will be","Once Medicaid pays, nearly all her income goes to the facility and she keeps an allowance — considerably less than the few hundred a month she has now. The Oregon figure for assisted living differs from the nursing-home one. Easier if it is not a surprise"],
+["Her debts","Decided: stop paying both cards and the SBA loan","Chase \$11,342.49, AAA \$5,929.10, SBA \$65/month on a dissolved LLC. Paying them spends the runway that decides whether Medicaid arrives in time, and protects her from creditors who mostly cannot reach her"],
+["Her debts","Do not pay the cards off — and do not file bankruptcy","Clearing \$17,272 costs a quarter of everything she has and reduces her care bill by nothing; it pulls spend-down forward from late November 2027 to early August. Chapter 7 is worse: her brokerage account is not exempt in Oregon and a trustee would take it. The August briefing was wrong on this — she does not have minimal assets"],
+["Her debts","A payment restarts Oregon's six-year clock","ORS 12.080 runs from the last payment, not from when the debt was incurred. Keeping up minimums does not shorten her exposure — it pushes the outer limit into 2033 and spends the money doing it"],
+["Her debts","If a lawsuit ever arrives, answer it — do not ignore service","A default judgment is how people lose cases they would have won or settled cheaply. Legal Aid's Senior Law Project defends consumer debt for people over 60 free, through ADRC on 1-855-673-2372. The exposure is the brokerage account and only while it exists"],
+["Her debts","Watch her Social Security deposit for a few months","Unlikely, but if a personal guarantee exists somewhere unseen, a defaulted federal debt goes to Treasury offset — roughly \$307 a month. It cannot happen silently; Treasury must send notice first. If the deposit ever drops, say so immediately"],
+["Her debts","Juice Plus finishes in December — let it run out","It is a payment plan on prior purchases, not a subscription. About \$360 left. Not worth the disruption of stopping; just confirm nothing renews behind it in January"],
+["Insurance","Let the Regence PPO renew for 2027","Network confirmed good at Conifer House. When the Annual Notice of Change arrives it is a two-minute check, not a decision: is the \$34 premium moving, and did any prescription change tier or come off the formulary"],
+["Insurance","Do not shop a dual-eligible plan until autumn 2027","D-SNPs require Medicaid, which starts around November 2027. Once she is dual-eligible she gets a special enrolment right that lets her switch monthly — she will not have to wait for an annual window"],
+["Insurance","Medigap is effectively closed to her — verify once with SHIBA","Outside protected windows Oregon insurers can medically underwrite a Medigap application and decline it. Someone in her eighties in assisted living would very likely be declined or priced out. Oregon's birthday rule only helps people who already hold a policy. SHIBA is free: 1-800-722-4134"],
+["Insurance","Know the fast appeal exists before you need it","Medicare Advantage plans end skilled nursing stays sooner than Original Medicare, and she came into Conifer House straight from one. If a rehab stay is cut short there is an appeal with a very tight deadline — a couple of days. Ask the facility to confirm the deadline at the time; published figures conflict and theirs governs"],
+
 ["Before signing","Have the residency agreement reviewed before signing","Look for rate-increase terms, discharge conditions, refund policy, and spend-down language"],
 ["Before signing","Sign as agent under POA — never as personally responsible party","Signing the wrong line can make you personally liable for her bill. Read the signature block carefully"],
 ["Before signing","Get the move-in date confirmed in writing",""],
@@ -849,13 +896,61 @@ const DOC_CHECKS=[
 
 
 
-DEF.todo = TODO_SEED.map(r=>({c:r[0],t:r[1],w:r[2],d:"",x:false}));
-const TODO_CATS=[...new Set(TODO_SEED.map(r=>r[0]))];
-const SEED_V=8;
-const SCHED_V=6;   // bump whenever SCHEDULE's shape changes
+/* v9: the move is done. These categories are no longer shipped to anyone —
+   a new install never sees them, and an existing device keeps only the ones
+   she actually ticked or dated. */
+const RETIRED_CATS=["Room prep","Move day","Belongings","The apartment","The car","Before signing","Facility questions"];
+DEF.todo = TODO_SEED.filter(r=>!RETIRED_CATS.includes(r[0])).map(r=>({c:r[0],t:r[1],w:r[2],d:"",x:false}));
+const TODO_CATS=[...new Set(DEF.todo.map(r=>r.c))];
+const BUILD_DATE="7 September 2026";
+const SEED_V=9;
+const SCHED_V=7;   // bump whenever SCHEDULE's shape changes
 DEF.todoSeedV=SEED_V;
 DEF.schedV=SCHED_V;
 DEF.al.base=6300;
+
+/* ── v9 · 7 Sep 2026 · the figures established with Kate, written in as current. ──
+   Every write is logged and shown on screen with a one-click revert, because the
+   local copy is the one she has been editing and it must never change silently. */
+const SEP26 = {
+  income:  { "Social Security": { amt:1844, note:"Net, as it lands. Gross is about $2,047 — the $202.90 Part B premium is already deducted, so do NOT also enter Part B as an expense. Medicaid counts the gross." } },
+  accounts: [
+    { inst:"Ameriprise", type:"Brokerage", bal:70702, access:"POA on file", note:"Taxable brokerage, not an IRA. Scheduled $5,000/mo withdrawal funds Conifer House. Confirmed 7 Sep 2026" },
+    { inst:"Citizens Bank", type:"Checking", bal:500, access:"POA on file", note:"Everyday account. The $5,000 withdrawal lands here; about $44/mo of slack accumulates. Confirmed 7 Sep 2026" }
+  ],
+  expenseAfter: {
+    "Medicare supplement / Advantage": [34,  "Regence MedAdvantage + Rx Primary (PPO). Auto-paid via InstaMed"],
+    "Medicare Part B":                 [0,   "Already deducted from her Social Security — income above is net. Do not double count"],
+    "Cell phone":                      [0,   "Kate cancelled it and added her to her own account. No money crosses between them"],
+    "Subscriptions & memberships":     [90,  "Juice Plus — a payment plan on prior purchases, about $360 left, finishes December 2026"],
+    "Gifts / charity / church":        [0,   "Nothing recurring found in 120 days. Keep it that way: giving inside the 60-month lookback creates a penalty period"]
+  }
+};
+let SEP26_LOG=[];
+function logSet(what, from, to){ if(String(from)===String(to)) return false; SEP26_LOG.push({what,from,to}); return true; }
+
+function migrateSep2026(){
+  if(!S.income||!S.accounts||!S.expense) return;
+  const inc=S.income.find(r=>/social security/i.test(r.name));
+  if(inc && logSet("Income · Social Security", money(num(inc.amt))+"/mo", "$1,844/mo")){ inc.amt=1844; inc.note=SEP26.income["Social Security"].note; }
+  SEP26.accounts.forEach(a=>{
+    let row=S.accounts.find(r=>r.inst && new RegExp(a.inst.split(" ")[0],"i").test(r.inst));
+    if(!row){ row=S.accounts.find(r=>!r.inst && !num(r.bal)); if(row) row.inst=a.inst; }
+    if(!row){ S.accounts.push({inst:a.inst,type:a.type,bal:a.bal,access:a.access,bene:"",note:a.note});
+              SEP26_LOG.push({what:"Accounts · "+a.inst,from:"not listed",to:money(a.bal)}); return; }
+    if(logSet("Accounts · "+a.inst, money(num(row.bal)), money(a.bal))) row.bal=a.bal;
+    row.type=a.type; row.note=a.note;
+  });
+  Object.entries(SEP26.expenseAfter).forEach(([name,[amt,note]])=>{
+    const e=S.expense.find(r=>r.name===name);
+    if(!e) return;
+    if(logSet("Ongoing · "+name, money(num(e.after))+"/mo", money(amt)+"/mo")) e.after=amt;
+    e.note=note;
+  });
+  const misc=S.expense.find(r=>/her own spending/i.test(r.name));
+  if(!misc) S.expense.push({cat:"Personal",name:"Her own spending money",now:0,after:359,
+    note:"Balance of the $500/month she needs beyond the Conifer House bill. Drops sharply to a personal needs allowance once Medicaid starts"});
+}
 
 /* v3: her facility is confirmed at $6,300/mo with a $2,500 move-in fee.
    Only fills values still sitting at a default — never overwrites her own entries. */
@@ -876,57 +971,63 @@ const RETIRED=["Decide: sell, rent, or end the lease",
 "Take final meter readings and photograph them","Do a final walkthrough for forgotten spaces",
 "Return library books and anything borrowed"];
 
+let RETIRED_LOG=[];
+
 function migrateTodo(){
   if(!Array.isArray(S.todo)||!S.todo.length){ S.todo=DEF.todo.map(o=>Object.assign({},o)); S.todoSeedV=SEED_V; return; }
   if(S.todoSeedV===SEED_V) return;
   S.todo=S.todo.filter(t=>!(t.c==="The home" && !t.x && !t.d && RETIRED.includes(t.t)));
+  const before=S.todo.length;
+  S.todo=S.todo.filter(t=>!(RETIRED_CATS.includes(t.c) && !t.x && !t.d));
+  const cleared=before-S.todo.length;
+  /* A move-era task she dated but never ticked would otherwise read as overdue
+     for ever. Keep the task, drop the dead date — it goes back to undated work. */
+  let undated=0;
+  S.todo.forEach(t=>{ if(RETIRED_CATS.includes(t.c) && !t.x && t.d && t.d < todayISO()){ t.d=""; undated++; } });
+  if(cleared) RETIRED_LOG.push(cleared+" finished-with move tasks cleared");
+  if(undated) RETIRED_LOG.push(undated+" stale August date"+(undated===1?"":"s")+" cleared so they stop reading as overdue");
   const have=new Set(S.todo.map(t=>t.t));
   DEF.todo.forEach(o=>{ if(!have.has(o.t)) S.todo.push(Object.assign({},o)); });
   S.todoSeedV=SEED_V;
 }
 
 /* ── Aug 1–14 countdown. [ISO date, headline, kind, [[task, why]…]] ── */
+/* ── The road to Medicaid. [ISO date, headline, kind, [[task, why]…]] ──
+   Days before today are hidden by default; this is a forward timeline now,
+   not a countdown. Every date is derived from the runway, not authored against
+   the calendar — if the care-level fee changes, these move with it. ── */
 const SCHEDULE=[
-["2026-08-09","Sunday","",[
-["Longer visit. Take her outside if she's able","One week in. This is when the reality of it usually lands for people"],
-["Ask the staff directly how her first week went","She may not tell you. They will"],
-["Take an actual afternoon off","You have five days left and nothing on this list gets done well by someone running on empty"]
-]],
-["2026-08-10","Monday","key",[
-["Cancel internet/cable and RETURN the equipment","Unreturned equipment fees are a classic surprise bill"],
-["Cancel recurring services and deliveries",""],
-["Cancel her auto insurance once the car is actually gone",""],
-["Set up autopay for the facility from her account",""],
-["Work through the autopay list — redirect or cancel each one",""],
-["Empty and close the safe deposit box","Inventory the contents with a witness present"]
-]],
-["2026-08-11","Tuesday","",[
-["Junk removal",""],
-["Deep clean, or decide the deduction is cheaper than the cleaner",""],
-["Photograph and video every room, empty and lit","This is how you get the deposit back. Timestamped, including inside appliances and closets"]
-]],
-["2026-08-12","Wednesday","key",[
-["Joint walkthrough with the landlord if you can get one","Disagreements settle far more easily in person than by mail"],
-["Return every key, fob, mailbox key, parking pass, amenity card",""],
-["Get written confirmation of the move-out date and the deposit process","Ask for the deadline and the address they'll mail it to"],
-["Schedule utility shutoffs for AFTER today, not before",""]
-]],
-["2026-08-13","Thursday","key",[
-["Leave this day empty on purpose","Something will slip. If nothing does, you get a day with her instead of a day of errands"],
-["Start the Medicaid file: a single folder or box","5 years of statements, the lease, insurance policies, car disposition paperwork, every receipt from this move"],
-["Give the facility your contact details and set a check-in cadence",""],
-["Line up one local person who can show up in an emergency","Even a neighbor or church member. You'll be 2,000 miles away"],
-["Longer visit — this is the last unhurried one for a while",""]
-]],
-["2026-08-14","Friday — original departure date","move",[
-["Load the keepsakes you're taking to LA the night before","You're driving, which is a quiet advantage — anything you or the family want to keep goes in your car instead of being shipped, stored, or sold. Set those items aside early in the week so they don't end up in the donation pile"],
-["Photograph anything you take and note it in the Downsizing tracker","Not paranoia — a clean record of what left and where it went protects you if Medicaid ever asks, and protects the family from misunderstandings later"],
-["Morning visit before you go",""],
-["Tell her clearly when you'll call and when you'll next visit","Vagueness is harder on her than distance"],
-["Confirm the first invoice date and that you'll receive it",""],
-["Put a recurring monthly reminder on your calendar to reconcile her account","One hour a month. Read the invoice line by line"]
-]]
+["2026-09-14","Stop the payments","",[
+["Cancel Chase, AAA and the SBA payment at Citizens — not just in each portal","A recurring payment can live in two places: the company pulls it, or the bank pushes it. Turning off autopay at Chase does nothing to a Citizens bill-pay"],
+["Tell Citizens in writing to revoke the ACH authorisation for all three","The enforceable version. Federal rules require them to honour it with three business days' notice. A few dollars per stop payment against $420 a month"],
+["Check the next two Citizens statements to confirm nothing slipped through","One stray payment restarts Oregon's six-year clock on that account"]]],
+["2026-09-21","The slow paperwork starts now","",[
+["Request 60 months of statements from Ameriprise and Citizens","The single most likely thing to hold up a June 2027 filing. Banks take weeks and purge old records"],
+["Call ADRC on 1-855-673-2372","Opens the Medicaid track, the free Senior Law Project referral, and the personal needs allowance answer in one call"],
+["Start the Representative Payee application","SSA does not accept a power of attorney. Separate application, own interview, takes weeks"]]],
+["2026-10-15","Medicare open enrolment opens","",[
+["Read the Annual Notice of Change","Two minutes, not a decision: is the $34 premium moving, and did any prescription change tier or come off the formulary"],
+["Let the Regence PPO renew","Network confirmed good at Conifer House. A dual-eligible plan is not open to her until Medicaid starts"]]],
+["2026-12-07","Open enrolment closes","",[
+["Confirm the plan renewed and nothing changed underneath it","If nobody acts it renews automatically — that is the intended outcome this year"]]],
+["2026-12-31","Juice Plus finishes","",[
+["Confirm nothing renews behind it in January","It was a payment plan on prior purchases, not a subscription. Her last recurring charge"]]],
+["2027-03-01","Chase reaches charge-off","",[
+["Expect the account to be sold to a debt buyer","A charge-off is an accounting entry, not the end of the debt. Nothing to do — this is the expected path"],
+["If anything arrives that looks like a lawsuit, do not ignore it","A default judgment is how people lose cases they would have won. Legal Aid's Senior Law Project defends this free, through ADRC"]]],
+["2027-04-01","Assemble the file","",[
+["Check the 60 months of statements actually arrived, and chase what didn't","Two months of slack before the filing date, deliberately"],
+["Confirm the Representative Payee and both bank POA processes are finished","These are the long-lead items. This is the date they have to be done by"]]],
+["2027-06-01","File the Medicaid application","",[
+["File it","Four to six months before the money runs out. Processing runs 45 to 90 days and Conifer House expects $6,300 a month throughout"],
+["Ask Conifer House's Medicaid coordinator to review it before it goes","They do this every week. Free, and they know what the local office rejects"]]],
+["2027-09-01","Chase it if there is no determination","",[
+["Call the caseworker if nothing has come back in 90 days","Applications get delayed, mislaid and returned for missing documents. Ten weeks of runway left at this point — enough to fix it, not enough to ignore it"]]],
+["2027-11-20","Savings reach the $2,000 limit","",[
+["Medicaid must be approved and paying by now, not still in progress","This is the date the arithmetic gives: $71,202 drawn at about $4,956 a month from September 2026"],
+["Confirm her personal needs allowance and what it actually covers","Nearly all her income now goes to the facility. The drop in what she can spend on herself is the part families do not see coming"]]]
 ];
+
 
 
 
@@ -954,9 +1055,17 @@ function load(){
   for(const k in DEF) if(S[k]===undefined) S[k]=JSON.parse(JSON.stringify(DEF[k]));
   S.gh=S.gh||{token:"",gist:"",last:0};
   if(priorV!==SEED_V){
+    /* Snapshot BEFORE anything is rewritten, so "Put it all back" is real and
+       not a button that half works. Kept separate from the replan undo. */
+    try{ localStorage.setItem(KEY+"_v9pre", JSON.stringify(S)); }catch(e){}
     migrateKnownCosts();
-    if(Array.isArray(S.items) && !S.items.some(r=>/CR-V|Honda/i.test(r.name||"")))
-      S.items.unshift({name:"2002 Honda CR-V (200k+ mi)",room:"Need charity receipt + title paperwork + photo",dest:"Undecided",val:600,who:"",done:false});
+    migrateSep2026();
+    if(Array.isArray(S.items)){
+      const car=S.items.find(r=>/CR-V|Honda/i.test(r.name||""));
+      if(car && car.dest==="Undecided"){ car.dest="Donated"; car.done=true;
+        car.room="Donated with a dated receipt in hand. If it sells above $500 the charity owes a Form 1098-C — keep it with the receipt";
+        SEP26_LOG.push({what:"Belongings · 2002 Honda CR-V",from:"Undecided",to:"Donated, receipt held"}); }
+    }
   }
 }
 /* save persists only — it never re-renders inputs, so typing is never interrupted */
@@ -1232,18 +1341,52 @@ function carryForward(){
   save(); renderCount(); renderTodo(); renderOverview();
   toast(n?`Moved ${n} unfinished item${n>1?'s':''} into the Checklist, dated today`:"Nothing left to carry forward");
 }
+/* Months of savings left at today's numbers, using the same inflation and
+   return assumptions the Overview tab uses. Returns null when the data isn't
+   there yet, so the screen can say so instead of inventing a date. */
+function runwayMonths(){
+  const assets=assetsTot();
+  const cost=alTot()+expAfter();
+  const inc=incomeTot();
+  if(!assets || cost<=inc) return null;
+  const mo=runway(assets, inc, cost, num(S.assump.infl), num(S.assump.ret));
+  return (typeof mo==="number" && isFinite(mo) && mo>0 && mo<999) ? mo : null;
+}
+function addMonths(d,mo){
+  const x=new Date(d.getTime());
+  const whole=Math.trunc(mo), frac=mo-whole;
+  x.setMonth(x.getMonth()+whole);
+  x.setDate(x.getDate()+Math.round(frac*30.44));
+  return x;
+}
 function renderCountStats(){
   const today=new Date(); today.setHours(0,0,0,0);
   /* Before move-in this counts down; on the day and after it becomes a
      "how long has she been there" counter, which is what you actually want later. */
-  const mi=daysOut("2026-08-05");
-  if(mi>0){ $("c-d1-lab").textContent="Move-in"; $("c-d1").textContent=mi; $("c-d1-foot").textContent="Wednesday, August 5"; }
-  else if(mi===0){ $("c-d1-lab").textContent="Move-in"; $("c-d1").textContent="Today"; $("c-d1-foot").textContent="Wednesday, August 5 · direct from the SNF"; }
-  else { $("c-d1-lab").textContent="At Conifer House"; $("c-d1").textContent="Day "+(1-mi); $("c-d1-foot").textContent="since Wednesday, August 5"; }
-  const lv=S.leaveDate||"2026-08-14";
-  $("c-d2").textContent=Math.max(0,daysOut(lv));
-  const lvEl=$("c-d2-foot"); if(lvEl) lvEl.innerHTML=new Date(lv+"T00:00:00").toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})+
-    ` · <input type="date" value="${lv}" onchange="setLeave(this.value)" style="width:auto;font-size:11.5px;padding:1px 3px;border:1px solid var(--line);background:#fff;display:inline-block">`;
+  /* Both figures are derived, never authored. Change a balance or the facility
+     rate and these move with it — the filing date is always 5 months before the
+     money runs out, because that is the only thing that makes it a plan. */
+  const mo   = runwayMonths();
+  const outD = mo===null? null : addMonths(today, mo);
+  const fileD= outD===null? null : addMonths(outD, -5);
+
+  if(fileD){
+    const dl=Math.round((fileD-today)/864e5);
+    $("c-d1-lab").textContent = dl>0? "Days until the Medicaid filing" : "Medicaid filing is due";
+    $("c-d1").textContent = dl>0? dl : (dl===0? "Today" : Math.abs(dl)+" late");
+    $("c-d1-foot").textContent = "Target: "+fileD.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});
+  } else {
+    $("c-d1-lab").textContent="Days until the Medicaid filing";
+    $("c-d1").textContent="—"; $("c-d1-foot").textContent="Fill Accounts and Budget to get a date";
+  }
+  if(outD){
+    $("c-d2").textContent = mo>=1? Math.round(mo)+" mo" : "<1 mo";
+    $("c-d2-foot").textContent = "about "+outD.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});
+    const card=$("c-run-card");
+    if(card) card.className = "stat"+(mo<6?" alert":mo<12?" caution":"");
+  } else {
+    $("c-d2").textContent="—"; $("c-d2-foot").textContent="needs balances and the monthly cost";
+  }
   let todayOpen=0, slipped=0;
   SCHEDULE.forEach((d,di)=>{
     const off=daysOut(baseDate(d[0]));
@@ -1320,7 +1463,34 @@ function doneDrawer(iso, done, all){
       <button class="mini" onclick="reopenTodo(${i})" style="padding:3px 9px;font-size:12px">↩ reopen</button></div>`; });
   return h+`</div></div>`;
 }
+/* Shown once, on the device where the v9 migration actually ran. Her local copy
+   is the one she has been editing, so nothing may change silently — this says
+   exactly what moved and offers one button to put it all back. */
+function renderUpdateNotice(){
+  const el=$("updateOut"); if(!el) return;
+  if(S.v9seen){ el.innerHTML=""; return; }
+  if(!SEP26_LOG.length && !RETIRED_LOG.length){ el.innerHTML=""; return; }
+  const rows=SEP26_LOG.map(c=>
+    `<tr><td style="padding:6px 9px">${c.what}</td>
+         <td style="padding:6px 9px;color:var(--muted);text-align:right">${c.from}</td>
+         <td style="padding:6px 9px;text-align:center;color:var(--muted)">→</td>
+         <td style="padding:6px 9px;font-weight:600;text-align:right">${c.to}</td></tr>`).join("");
+  el.innerHTML=`<div class="card" style="border-color:var(--accent)">
+    <h2>This version changed ${SEP26_LOG.length} figure${SEP26_LOG.length===1?"":"s"} on this device</h2>
+    <p class="note">Updated ${BUILD_DATE} with the numbers confirmed with Kate on 7 September 2026.
+      ${RETIRED_LOG.length?RETIRED_LOG.join("; ")+". ":""}Anything you had ticked or dated was kept.</p>
+    ${rows?`<div class="scroll"><table><thead><tr><th>What</th><th style="text-align:right">Was</th><th></th><th style="text-align:right">Now</th></tr></thead><tbody>${rows}</tbody></table></div>`:""}
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button class="primary mini" onclick="S.v9seen=true;save();renderUpdateNotice()">Looks right — dismiss</button>
+      <button class="mini" onclick="undoV9()">↺ Put it all back</button>
+    </div>
+    <div class="callout warn" style="margin-top:14px"><b>Sync is on both devices and the newer whole file wins — there is no merging.</b>
+      Let this device finish, press <b>⇧ Sync</b> at the top, then open the other device and <b>Pull</b> before you edit anything there.</div>
+  </div>`;
+}
+
 function renderCount(){
+  renderUpdateNotice();
   let h="";
   /* The plan starts at TODAY. Earlier days are hidden entirely unless asked for —
      their unfinished work belongs in the Checklist, not at the top of the screen. */
@@ -1970,6 +2140,21 @@ function scheduleAll(){
   S.chat=(S.chat||[]).concat([{me:"Schedule everything", reply:msg, added:[], t:Date.now()}]).slice(-30);
   save(); renderChat(); alert(msg);
 }
+/* Restores the device exactly as it was before this version's migration ran.
+   The GitHub token is preserved — it lives in S.gh and must survive a restore. */
+function undoV9(){
+  let raw=null;
+  try{ raw=localStorage.getItem(KEY+"_v9pre"); }catch(e){}
+  if(!raw){ toast("Nothing to undo on this device"); return; }
+  if(!confirm("Put every figure back the way it was before this update? Tasks added by the update stay.")) return;
+  const gh=S.gh;
+  try{ S=JSON.parse(raw); }catch(e){ toast("Could not read the backup"); return; }
+  S.gh=gh; S.v9seen=true;
+  SEP26_LOG=[]; RETIRED_LOG=[];
+  save(); renderNav(); renderAll();
+  toast("Figures restored to before the update");
+}
+
 function undoReplan(){
   const raw=localStorage.getItem(KEY+"_undo");
   if(!raw) return toast("Nothing to undo");
@@ -2414,7 +2599,7 @@ window.addEventListener("online",()=>{ autoPull(); autoPush(); });
 setInterval(()=>{ if(!document.hidden) autoPull(); }, 60000);
 
 /* ─────────── nav ─────────── */
-const TABS=[["count","THE PLAN"],["overview","Overview"],["budget","Budget"],["accounts","Accounts"],["todo","Checklist"],["after","AFTER"]];
+const TABS=[["count","THE PLAN"],["overview","Overview"],["budget","Budget"],["accounts","Accounts"],["todo","Checklist"],["after","Ongoing"]];
 function planLabel(){
   const d=allDates(); if(!d.length) return "The plan";
   const f=new Date(d[0]+"T00:00:00"), l=new Date(d[d.length-1]+"T00:00:00");
@@ -2423,9 +2608,9 @@ function planLabel(){
 }
 function renderNav(){
   $("nav").innerHTML=TABS.map((t,i)=>{
-    const lv=S.leaveDate||"2026-08-14";
-    const after="After "+new Date(lv+"T00:00:00").toLocaleDateString(undefined,{month:'numeric',day:'numeric'});
-    const label = t[0]==="count" ? planLabel() : t[0]==="after" ? after : t[1];
+    /* The tab used to be named after the day Kate drove home. That date is
+       fifteen months gone — it's the ongoing-job tab now. */
+    const label = t[0]==="count" ? planLabel() : t[1];
     const on = $("p-"+t[0]) && $("p-"+t[0]).className.indexOf("on")>-1;
     return `<button class="${on?'on':''}" onclick="go('${t[0]}',this)">${label}</button>`;
   }).join("");
